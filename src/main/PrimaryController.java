@@ -39,7 +39,7 @@ public class PrimaryController {
 	 */
 	public void startTournament(StartTournamentAction action){
 		if (action.getType() == StartTournamentAction.USER_TOURNAMENT){
-			ArrayList<Player> players = new ArrayList<>();
+			ArrayList<Player> players = new ArrayList<Player>();
 			for (int i = 0; i < 6; ++i) {
 				players.add(new Player());
 			}

@@ -5,11 +5,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
-import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -38,11 +38,11 @@ public class PokerTable extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private ArrayList<JLabel> communityLabels= new ArrayList<>(5);
-	private ArrayList<Card> communityCards = new ArrayList<>(5);
+	private ArrayList<JLabel> communityLabels= new ArrayList<JLabel>(5);
+	private ArrayList<Card> communityCards = new ArrayList<Card>(5);
 	
 	public static final Dimension CARD_SIZE = new Dimension(70, 100);
-	private HashMap<Player, OpponentPanel> panels = new HashMap<>();
+	private HashMap<Player, OpponentPanel> panels = new HashMap<Player, OpponentPanel>();
 	private JLabel lblUserCards;
 	private EventBus bus;
 	private JButton advanceGame;
@@ -242,11 +242,8 @@ public class PokerTable extends JPanel {
 	 * @author dgibbs
 	 *
 	 */
-	class AdvanceGameAction extends AbstractAction {
+	class AdvanceGameAction implements ActionListener {
 
-		private static final long serialVersionUID = 1L;
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			bus.post(new AdvanceHandAction());
 		}

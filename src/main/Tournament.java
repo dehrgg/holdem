@@ -29,7 +29,7 @@ public abstract class Tournament {
 	
 	private TableState state;
 	
-	private ArrayList<Player> players = new ArrayList<>();
+	private ArrayList<Player> players = new ArrayList<Player>();
 	private Stack<Card> deck = new Stack<Card>();
 	private Stack<Card> discarded = new Stack<Card>();
 	private Stack<Card> visible = new Stack<Card>();
@@ -164,8 +164,8 @@ public abstract class Tournament {
 	 * @return player(s) and the cards they used to win the current hand
 	 */
 	protected Vector<PlayerHand> checkHandWinner() {
-		HashMap<PlayerHand, Long> ranks = new HashMap<>();
-		ArrayList<Card> allSeven = new ArrayList<>();
+		HashMap<PlayerHand, Long> ranks = new HashMap<PlayerHand, Long>();
+		ArrayList<Card> allSeven = new ArrayList<Card>();
 		for (Player player : players){
 			allSeven.clear();
 			allSeven.addAll(visible);
@@ -175,7 +175,7 @@ public abstract class Tournament {
 			long bestRank = 0;
 			ArrayList<Card> bestHand = null;
 			for (ICombinatoricsVector<Card> combination : gen) {
-				ArrayList<Card> tempHand = new ArrayList<>(combination.getVector());
+				ArrayList<Card> tempHand = new ArrayList<Card>(combination.getVector());
 				long tempRank = HandRanking.rankHand(tempHand);
 				if (tempRank > bestRank){
 					bestRank = tempRank;
@@ -184,7 +184,7 @@ public abstract class Tournament {
 			}
 			ranks.put(new PlayerHand(player, bestHand), bestRank);
 		}
-		Vector<PlayerHand> winners = new Vector<>();
+		Vector<PlayerHand> winners = new Vector<PlayerHand>();
 		long highHand = 0;
 		for (Entry<PlayerHand,Long> entry : ranks.entrySet()){
 			long playerScore = entry.getValue();

@@ -185,7 +185,7 @@ public class HandRanking {
 	 * 			<br> -1 if no value in the hand has the given multiplicity
 	 */
 	private static long hasMultiple(ArrayList<Card> hand, long exclusion, int multiplicity){
-		HashMap<Integer, Integer> counts = new HashMap<>();
+		HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
 		for (Card card : hand){
 			int value = card.getValue();
 			Integer count = counts.get(value);
@@ -253,7 +253,6 @@ public class HandRanking {
 	private static void sortHand(ArrayList<Card> hand){
 		Collections.sort(hand, new Comparator<Card>(){
 
-			@Override
 			public int compare(Card one, Card two) {
 
 				return one.getValue() - two.getValue();
